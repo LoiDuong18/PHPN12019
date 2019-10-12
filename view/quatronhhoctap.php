@@ -6,9 +6,9 @@ $rsMockData = Learninghistory::getList("102T1011010"); //toan tu phan giai mieng
 $linesFromFile = Learninghistory::getListFromFile("101");
 //var_dump($linesFromFile);
 if ($_SERVER['REQUEST_METHOD']=='POST') {
-	$sif = "1$".$_POST["txtTuNam"]."$".$_POST["txtDenNam"]."$".$_POST["txtTruong"]."$".$_POST["txtNoiHoc"]."$101\n";
+	$str = "1$".$_POST["txtTuNam"]."$".$_POST["txtDenNam"]."$".$_POST["txtTruong"]."$".$_POST["txtNoiHoc"]."$101\n";
 	$fp = fopen('../resource/learninghistory.txt','a');
-	fwrite($fp,$sif);
+	fwrite($fp,$str);
 	fclose($fp);
 }
 ?>
@@ -65,25 +65,25 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     <h5 class="modal-title">Thêm quá trình học tập</h5>
                 </div>
                 <div class="modal-body">
-				<form method="POST" enctype="multipart/form-data">
-                                        <div class="form-data">
-                                            <div class="form-group">
-                                                <label>Từ năm</label>
-                                                <input class="form-control" type="number" min="1990" max="<?php  echo $date['year']?>" name="txtTuNam" value="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Đến năm</label>
-                                                <input class="form-control" type="number" min="1990" max="<?php  echo $date['year'] ?>" name="txtDenNam" value="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Trường</label>
-                                                <input class="form-control" type="text" min="1" max="12" name="txtTruong" value="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nơi học</label>
-                                                <input class="form-control" type="text" name="txtNoiHoc" value="" required>
-                                            </div>
-                                        </div>     
+				<form method="POST" action="quatronhhoctap.php">
+					<div class="form-data">
+						<div class="form-group">
+							<label>Từ năm</label>
+							<input class="form-control" type="number" min="1990" max="<?php  echo $date['year']?>" name="yearFrom" value="" required>
+						</div>
+						<div class="form-group">
+							<label>Đến năm</label>
+							<input class="form-control" type="number" min="1990" max="<?php  echo $date['year'] ?>" name="yearTo" value="" required>
+						</div>
+						<div class="form-group">
+							<label>Trường</label>
+							<input class="form-control" type="text" min="1" max="12" name="schoolName" value="" required>
+						</div>
+						<div class="form-group">
+							<label>Nơi học</label>
+							<input class="form-control" type="text" name="schoolAddress" value="" required>
+						</div>
+					</div>     
                 </div>
                 <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
