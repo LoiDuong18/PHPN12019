@@ -1,12 +1,5 @@
 1$1990$1991$Phan Dang Luu$Hue$101
 2$1991$1992$Nguyen Sinh Cung$Hue$101
 3$1995#1996$Phan Dang Luu$Hue$102
-4$1997$1998$Nguyen Sinh Cung$Hue$102
-5$1992$1993$Phan Đăng Lưu$Huế$101
-6$1994$1995$Nguyễn Huệ$Huế$101
-1$1994$1995$Nguyễn Huệ$Huế$101
-1$1996$1997$Hai Bà Trưng$Huế$101
-1$1998$1999$Lê Lợi$Huế$101
-1$2000$2001$Nguyễn Trãi$Huế$101
-1$2002$2003$Nguyễn Sinh Cung$Huế$101
-1$1990$1991$Phú Xuân$Huế$101
+4$1997$1998$Nguyen Sinh Cung$Hue$1021$$$$$101
+1$$$$$101
