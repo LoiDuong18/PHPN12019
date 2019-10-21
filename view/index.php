@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+}
 include_once("../model/entity/user.php");
 include_once("header.php");
 include_once("nav.php");

@@ -81,6 +81,14 @@
             <a class="nav-link" href="quatronhhoctap.php">
                 <i class="fa fa-user"></i>Quá trình học tập</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="testajax.php">
+                <i class="fa fa-user"></i>Test Ajax</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="quatrinhhoctapAjax.php">
+                <i class="fa fa-user"></i>Quá Trình Học Tập Ajax</a>
+        </li>
     </ul>
 
     <div id="content-wrapper">

@@ -4,13 +4,9 @@ include_once("nav.php");
 include_once("../model/entity/learninghistory.php");
 $rsMockData = Learninghistory::getList("102T1011010"); //toan tu phan giai mieng
 $linesFromFile = Learninghistory::getListFromFile("101");
+$linesFromDB = Learninghistory::getListFromDB('101');
 //var_dump($linesFromFile);
-if ($_SERVER['REQUEST_METHOD']=='POST') {
-	$str = "1$".$_POST["txtTuNam"]."$".$_POST["txtDenNam"]."$".$_POST["txtTruong"]."$".$_POST["txtNoiHoc"]."$101\n";
-	$fp = fopen('../resource/learninghistory.txt','a');
-	fwrite($fp,$str);
-	fclose($fp);
-}
+
 ?>
 <div class="container-fluid">
 	<div class="table-responsive">
@@ -18,9 +14,60 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 			<div class="btn-add d-flex justify-content-end align-items-center pb-3">
 			<!-- <button type="button" class="btn btn-outline-primary btn-rounded waves-effect">
 				<i class="fas fa-plus-circle"></i> Thêm</button> -->
-				<div class="container">
+			
     <!-- <h5>Thêm quá trính học tập</h5> -->
-    <!-- Trigger the modal with a button -->
+	<!-- Trigger the modal with a button -->
+	<!--  -->
+	<div>
+    <?php
+    if (isset($_GET['id'])) {
+        if (filter_var($_GET['id'],FILTER_VALIDATE_INT,array('min_range' => 0)) && $_GET['id']>0) {
+            $id = 0;
+            foreach ($dataFromFile as $key => $value) {
+                $id++;
+                if ($id==$_GET['id']) {
+                    ?>
+                    <form method="POST" action="../createview/editquatrinhhoctap.php">
+                        <div class="form-data">
+                            <div class="form-group">
+                                <label>Từ năm</label>
+                                <input class="form-control" type="number" min="1990" max="<?php  echo date("Y")?>" name="txtTuNam" value="<?php echo $value->yearFrom; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Đến năm</label>
+                                <input class="form-control" type="number" min="1990" max="<?php  echo date("Y") ?>" name="txtDenNam" value="<?php echo $value->yearTo; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Trường</label>
+                                <input class="form-control" type="text" min="1" max="12" name="txtTruong" value="<?php echo $value->schoolName; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nơi học</label>
+                                <input class="form-control" type="text" name="txtNoiHoc" value="<?php echo $value->schoolAddress; ?>" required>
+                            </div>
+                            <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
+                            <a class="btn btn-secondary" href="quatronhhoctap.php">Hủy</a>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Cập nhật</button>
+                    </form><?php 
+                }
+            }
+            ?>
+        
+            <?php
+        }else { 
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-question-circle"></i>
+                <strong>Lỗi :</strong> ID không hợp lệ !~
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>';
+            }
+    }
+        
+    ?>
+</div>
+	<!--  -->
     <button type="button" class="btn btn-primary btn-right" data-toggle="modal"
     data-target="#quatrinhhoctap">Thêm</button>
 			</div>
@@ -36,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 			</thead>
 			<tbody>
 				<?php
-					foreach($linesFromFile as $key => $value){
+					foreach($linesFromDB as $key => $value){
 						$stt = $key + 1;
 						echo "<tr>";
 						echo "<th scope='row'>$stt</th>";
@@ -61,11 +108,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h5 class="modal-title">Thêm quá trình học tập</h5>
+				   <h5 class="modal-title">Thêm quá trình học tập</h5>
+				   <button type="button" class="close" data-dismiss="modal">&times;</button>
+				   <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="modal-body">
-				<form method="POST" action="quatronhhoctap.php">
+				<form method="POST" action="../createview/addquatronhhoctap.php">
 					<div class="form-data">
 						<div class="form-group">
 							<label>Từ năm</label>
@@ -93,6 +141,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         </div>
     </div>
 </div>
+<script>
+    function remove(id){
+    var del=confirm("Bạn có thực sự muốn xóa không ?");
+    if (del==true){
+        window.location.href="../controller/deletequatrinhhoctap.php?id="+id;
+    }
+}
+</script>
 
 <?php
 include_once("footer.php"); ?>

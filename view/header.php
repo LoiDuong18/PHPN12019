@@ -1,3 +1,15 @@
+  
+<?php
+if ($_SERVER['REQUEST_METHOD']=='GET') {
+    if (isset($_GET['rs']) && $_GET['rs']=='success') {
+        echo "<script>alert('Cập nhật thành công !');</script>";
+    }
+    elseif(isset($_GET['rs']) && $_GET['rs']=='delete') {
+        echo "<script>alert('Xóa thành công !');</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +31,7 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 <body>
