@@ -1,0 +1,4 @@
+1$Nguyen Van A$012345678$NGA@gmail.com$Hue
+2$Nguyen Van B$087654321$NGB@gmail.com$Hue
+3$Nguyen Van C$012345687$NGC@gmail.com$Hue
+4$Nguyen Van D$012365478$NGC@gmail.com$Hue
