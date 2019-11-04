@@ -1,7 +1,4 @@
 1$1990$1991$Phan Dang Luu$Hue$101
 2$1991$1992$Nguyen Sinh Cung$Hue$101
 3$1995#1996$Phan Dang Luu$Hue$102
-4$1997$1998$Nguyen Sinh Cung$Hue$1021$$$$$1011$$$$$101
-1$$$$$101
-1$$$$$101
-1$$$$$101
+4$1997$1998$Nguyen Sinh Cung$Hue$102

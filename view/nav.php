@@ -89,6 +89,10 @@
             <a class="nav-link" href="quatrinhhoctapAjax.php">
                 <i class="fa fa-user"></i>Quá Trình Học Tập Ajax</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="Qldb.php">
+                <i class="fa fa-user"></i>Quản Lý Danh Bạ</a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
